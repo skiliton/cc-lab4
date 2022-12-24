@@ -9,22 +9,20 @@ import org.springframework.data.mongodb.core.query.Update
 import org.springframework.stereotype.Component
 import ua.repeta.cclab4.model.DutySchedule
 import java.time.DayOfWeek
-import java.time.OffsetTime
+import java.time.LocalTime
 
 
 @Component
-class ImplCustomDutyScheduleRepository(
+class CustomDutyScheduleRepositoryImpl(
     val mongoTemplate: MongoTemplate
-): CustomDutyScheduleRepository {
-
-
+) : CustomDutyScheduleRepository {
 
     override fun update(
         id: ObjectId,
         name: String?,
         surname: String?,
         description: String?,
-        schedule: Map<DayOfWeek, Pair<OffsetTime, OffsetTime>>?
+        schedule: Map<DayOfWeek, Pair<LocalTime, LocalTime>>?
     ): UpdateResult {
         val query = Query(Criteria.where(DutySchedule::id.name).`is`(id))
         val update = Update()

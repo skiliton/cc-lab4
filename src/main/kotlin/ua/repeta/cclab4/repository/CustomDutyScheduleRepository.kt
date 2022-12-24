@@ -2,9 +2,8 @@ package ua.repeta.cclab4.repository
 
 import com.mongodb.client.result.UpdateResult
 import org.bson.types.ObjectId
-import ua.repeta.cclab4.model.DutySchedule
 import java.time.DayOfWeek
-import java.time.OffsetTime
+import java.time.LocalTime
 
 interface CustomDutyScheduleRepository {
     fun update(
@@ -12,6 +11,6 @@ interface CustomDutyScheduleRepository {
         name: String? = null,
         surname: String? = null,
         description: String? = null,
-        schedule: Map<DayOfWeek, Pair<OffsetTime, OffsetTime>>? = null
+        schedule: Map<DayOfWeek, Pair<LocalTime, LocalTime>>? = null
     ): UpdateResult
 }

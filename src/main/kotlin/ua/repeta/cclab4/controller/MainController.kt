@@ -1,7 +1,6 @@
 package ua.repeta.cclab4.controller
 
 import org.bson.types.ObjectId
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -25,8 +24,7 @@ class MainController(
 ) {
     @PostMapping("/duty-schedule/")
     fun create(@RequestBody dutyScheduleCreateDto: DutyScheduleCreateDto): ResponseEntity<DutyScheduleReadDto> {
-        val dutySchedule = DutyScheduleDtoMappers.mapToDutySchedule(dutyScheduleCreateDto)
-        repository.save(dutySchedule)
+        val dutySchedule = repository.save(DutyScheduleDtoMappers.mapToDutySchedule(dutyScheduleCreateDto))
         return ResponseEntity(DutyScheduleDtoMappers.mapToDutyScheduleReadDto(dutySchedule), HttpStatus.CREATED)
     }
 
