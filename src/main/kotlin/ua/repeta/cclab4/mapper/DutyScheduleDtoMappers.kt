@@ -16,7 +16,7 @@ object DutyScheduleDtoMappers {
 
     fun mapToDutyScheduleReadDto(original: DutySchedule): DutyScheduleReadDto {
         return DutyScheduleReadDto(
-            id = original.id,
+            id = original.id!!.toHexString(),
             name = original.name!!,
             surname = original.surname!!,
             description = original.description!!,
